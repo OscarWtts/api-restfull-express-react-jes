@@ -1,9 +1,6 @@
 const express = require('express');
-
 const router = express.Router();
-
 const Fiscalia = require('../models/fiscalia');
-
 
 // --------------------------------------------------------------------------
 // Listar fiscalias
@@ -22,38 +19,16 @@ router.get('/:id', async (req, res) => {
 // --------------------------------------------------------------------------
 // Agregar una fiscalia 
 router.post('/', async (req, res) => {
-    const { nombre, departamento, municipio, direccion, telefono } = req.body;
-
-    const fiscalia = new Fiscalia({
-        nombre,
-        departamento,
-        municipio,
-        direccion,
-        telefono
-    });
+    const fiscalia = new Fiscalia(req.body);
 
     await fiscalia.save();
-
     res.json({ status: 'registro almacenado' });
 });
 
 // --------------------------------------------------------------------------
 // Actualizar fiscalia
 router.put('/:id', async (req, res) => {
-
-    const { nombre, departamento, municipio, direccion, telefono } = req.body;
-
-    const fiscaliaUpdated = {
-        nombre,
-        departamento,
-        municipio,
-        direccion,
-        telefono
-    };
-
-    await Fiscalia.findByIdAndUpdate(req.params.id, fiscaliaUpdated, {
-        useFindAndModify: false
-    });
+    await Fiscalia.findByIdAndUpdate(req.params.id, req.body, { useFindAndModify: false });
     res.json({ status: 'registro actualizado' });
 });
 

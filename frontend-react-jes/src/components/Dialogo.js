@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 
 
-const Dialogo = ({ visible, setVisible, fiscalia, setFiscalia, update, save, growl }) => {
+const Dialogo = ({ visible, setVisible, fiscalia, setFiscalia, update, save }) => {
 
     const { nombre, departamento, municipio, direccion, telefono } = fiscalia;
 
@@ -76,6 +77,15 @@ const Dialogo = ({ visible, setVisible, fiscalia, setFiscalia, update, save, gro
             </span>
         </Dialog>
     );
+}
+
+Dialogo.propTypes = {
+    visible: PropTypes.bool.isRequired,
+    setVisible: PropTypes.func.isRequired,
+    fiscalia: PropTypes.object.isRequired,
+    setFiscalia : PropTypes.func.isRequired,
+    update : PropTypes.func.isRequired,
+    save : PropTypes.func.isRequired
 }
 
 export default Dialogo;

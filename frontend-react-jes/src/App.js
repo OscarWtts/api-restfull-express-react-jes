@@ -77,8 +77,6 @@ const App = () => {
         setFiscalia={setFiscalia}
         update={update}
         save={save}
-        limpiar={limpiarDialogo}
-        growl={growl}
       />
     </div>
 
@@ -86,7 +84,7 @@ const App = () => {
 
   function save() {
     fiscaliaService.save(fiscalia).then(data => {
-      limpiarDialogo();
+      cleanDialog();
       setVisible(false);
       growl.current.show({ severity: 'success', summary: 'Atención', detail: 'Se guardó el registro correctamente.' });
       fiscaliaService.getAll().then(data => setFiscalias(data));
@@ -95,7 +93,7 @@ const App = () => {
 
   function update() {
     fiscaliaService.update(fiscalia.id,fiscalia).then(data => {
-      limpiarDialogo();
+      cleanDialog();
       setVisible(false);
       growl.current.show({ severity: 'success', summary: 'Atención', detail: 'Registro actualizado' });
       fiscaliaService.getAll().then(data => setFiscalias(data));
@@ -123,9 +121,11 @@ const App = () => {
     });
   }
 
-  function limpiarDialogo(){
+  function cleanDialog(){
     setFiscalia({});
   }
 }
+
+
 
 export default App;
