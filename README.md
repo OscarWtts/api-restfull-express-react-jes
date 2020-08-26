@@ -2,7 +2,13 @@
 aplicación restfull como prueba técnica para JES, frontEnd en REACT y backEnd en Express
 
 ## Implementacion 
-### 1. Se debe tener ejecutando la base de datos mongodb.
+### 1. Se debe tener ejecutando la base de datos.
+
+En windows podemos abrir una consola y ejcutar el servidor con el siguiente comando. 
+
+`
+mongod
+`
 
 ### 2. Una vez levantado nuestro servidor de base de datos, procedemos a levantar el backend.
 
